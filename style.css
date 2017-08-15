@@ -1,3 +1,22 @@
-h1 {
-  color:red;
+body {
+  background-color: #232323;
+}
+
+#message {
+  visibility: hidden;
+}
+
+.tile {
+  width: 30%;
+  margin: 1.66%;
+  float: left;
+  border-radius: 5px;
+  padding-bottom: 30%;
+  background: black;
+}
+
+
+.tile-display {
+  margin: 0 auto;
+  max-width: 600px;
 }
