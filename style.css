@@ -1,5 +1,17 @@
 body {
+  max-width: 600px;
+  margin: 0 auto;
   background-color: #232323;
+}
+
+.heading-display {
+  color: white;
+  width: 30%;
+  margin: 0 auto;
+}
+
+#winning-color {
+  text-transform: uppercase;
 }
 
 #message {
@@ -12,11 +24,19 @@ body {
   float: left;
   border-radius: 5px;
   padding-bottom: 30%;
-  background: black;
+  background-color: black;
 }
 
 
-.tile-display {
-  margin: 0 auto;
+.tile-board {
+  /*margin: 0 auto;*/
   max-width: 600px;
+}
+
+.winner {
+  border: 3px solid red;
+}
+
+.hide-tile {
+  visibility: hidden;
 }
