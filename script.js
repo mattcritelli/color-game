@@ -1,13 +1,12 @@
 var numTiles = 6;
 var allColors = [];
-var winningColor = selectWinningColor();
+var winningColor;
 var headline = document.getElementById("rgb-color-display");
 var tiles = document.querySelectorAll(".tile");
 var tileBoard = document.querySelector(".tile-board");
 var message = document.querySelector("#message");
 var h1 = document.querySelector("h1");
 var reset = document.querySelector("#reset").addEventListener("click", function(){
-  winningColor = selectWinningColor();
   newGame();
 });
 var easy = document.querySelector("#easy").addEventListener("click", function(){
@@ -20,13 +19,15 @@ var hard = document.querySelector("#hard").addEventListener("click", function(){
 })
 
 tileBoard.addEventListener("click", function(e){
-  if(e.target.classList[1] !== "winner"){
-    e.target.classList.add("invisible");
-    message.classList.add("show");
-    message.innerText = "Try Again."
-  } else {
-    message.innerText = "Correct!"
-    endGameColorChange();
+  if(e.target.classList[0] === "tile"){
+    if(e.target.classList[1] !== "winner"){
+      e.target.classList.add("invisible");
+      message.classList.remove("invisible");
+      message.innerText = "Try Again."
+    } else {
+      message.innerText = "Correct!"
+      endGameColorChange();
+    }
   }
 })
 
@@ -55,10 +56,12 @@ function generateTiles(){
   }
 }
 
-function resetWinnerClass(){
+function resetGameClasses(){
   for(var i = 0; i < tiles.length; i++){
     tiles[i].classList.remove("winner");
+    tiles[i].classList.remove("invisible");
   }
+  message.classList.add("invisible");
 }
 
 function selectWinningColor(){
@@ -68,7 +71,7 @@ function selectWinningColor(){
 function addClassToTiles(){
   for(var i = 0; i < tiles.length; i++){
     if(i === winningColor){
-      tiles[i].classList.add("winner")
+      tiles[i].classList.add("winner");
     }
   }
 }
@@ -82,10 +85,11 @@ function endGameColorChange(){
 }
 
 function newGame(){
+  winningColor = selectWinningColor();
   h1.style.backgroundColor = "#232323";
   generateColorArray();
+  resetGameClasses();
   generateTiles();
-  resetWinnerClass();
   addClassToTiles();
   headline.innerText = allColors[winningColor];
 }

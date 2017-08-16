@@ -1,5 +1,6 @@
 body {
   background-color: #232323;
+  color: white;
 }
 
 .heading-display {
@@ -12,9 +13,6 @@ body {
   text-transform: uppercase;
 }
 
-span {
-  color: white;
-}
 .tile-board {
   margin: 0 auto;
   max-width: 600px;
@@ -26,8 +24,4 @@ span {
   float: left;
   border-radius: 5px;
   padding-bottom: 30%;
-}
-
-.show {
-  visibility: visible;
 }
