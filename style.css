@@ -2,8 +2,22 @@ body {
   background-color: #232323;
 }
 
-#message {
-  visibility: hidden;
+.heading-display {
+  color: white;
+  width: 30%;
+  margin: 0 auto;
+}
+
+#rgb-color-display {
+  text-transform: uppercase;
+}
+
+span {
+  color: white;
+}
+.tile-board {
+  margin: 0 auto;
+  max-width: 600px;
 }
 
 .tile {
@@ -12,11 +26,8 @@ body {
   float: left;
   border-radius: 5px;
   padding-bottom: 30%;
-  background: black;
 }
 
-
-.tile-display {
-  margin: 0 auto;
-  max-width: 600px;
+.show {
+  visibility: visible;
 }
