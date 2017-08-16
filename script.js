@@ -29,7 +29,8 @@ hard.addEventListener("click", function(){
 tileBoard.addEventListener("click", function(e){
   if(e.target.classList[0] === "tile"){
     if(e.target.classList[1] !== "winner"){
-      e.target.classList.add("invisible");
+      e.target.classList.add("animated");
+      e.target.classList.add("fadeOut");
       message.classList.remove("invisible");
       message.innerText = "Try Again."
     } else {
@@ -67,7 +68,8 @@ function generateTiles(){
 function resetGameSettings(){
   for(var i = 0; i < tiles.length; i++){
     tiles[i].classList.remove("winner");
-    tiles[i].classList.remove("invisible");
+    tiles[i].classList.remove("animated");
+    tiles[i].classList.remove("fadeOut");
   }
   message.classList.add("invisible");
   h1.style.backgroundColor = "#587cb5";
@@ -87,7 +89,8 @@ function addClassToTiles(){
 
 function endGameColorChange(){
   for(i = 0; i < numTiles; i++){
-    tiles[i].classList.remove("invisible");
+    tiles[i].classList.remove("animated");
+    tiles[i].classList.remove("fadeOut");
     tiles[i].style.backgroundColor = allColors[winningColor];
     h1.style.backgroundColor = allColors[winningColor];
   }

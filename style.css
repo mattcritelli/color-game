@@ -26,6 +26,7 @@ h1 {
   color: black;
   background-color: white;
   text-align: center;
+  font-weight: 700;
 }
 
 .tile-board {
@@ -41,7 +42,27 @@ h1 {
   padding-bottom: 30%;
 }
 
+.animated {
+  animation-duration: .5s;
+}
+
+button {
+  padding-left: 10px;
+  padding-right: 10px;
+  color: #587cb5;
+  outline: none;
+  border: none;
+  background-color: white;
+  height: 100%;
+  transition: all 0.3s;
+}
+
 .selected {
-  background-color: blue;
+  background-color: #587cb5;
+  color: white;
+}
+
+button:hover {
+  background-color: #587cb5;
   color: white;
 }
