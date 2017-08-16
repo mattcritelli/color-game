@@ -8,7 +8,9 @@ var message = document.querySelector("#message");
 var h1 = document.querySelector("h1");
 var easy = document.querySelector("#easy");
 var hard = document.querySelector("#hard");
-var reset = document.querySelector("#reset").addEventListener("click", function(){
+var reset = document.querySelector("#reset")
+
+reset.addEventListener("click", function(){
   newGame();
 });
 
@@ -32,9 +34,10 @@ tileBoard.addEventListener("click", function(e){
       e.target.classList.add("animated");
       e.target.classList.add("fadeOut");
       message.classList.remove("invisible");
-      message.innerText = "Try Again."
+      message.innerText = "TRY AGAIN."
     } else {
-      message.innerText = "Correct!"
+      message.innerText = "CORRECT!"
+      reset.innerText = "PLAY AGAIN?"
       endGameColorChange();
     }
   }
@@ -73,6 +76,7 @@ function resetGameSettings(){
   }
   message.classList.add("invisible");
   h1.style.backgroundColor = "#587cb5";
+  reset.innerText = "NEW COLORS"
 }
 
 function selectWinningColor(){

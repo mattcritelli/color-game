@@ -21,12 +21,18 @@ h1 {
 }
 
 #control-bar {
-  margin: 0 auto;
-  padding: 0 auto;
   color: black;
   background-color: white;
   text-align: center;
   font-weight: 700;
+}
+
+.col-sm-1 {
+  max-width: 50px;
+}
+
+#hard {
+  margin-right: 20px;
 }
 
 .tile-board {
