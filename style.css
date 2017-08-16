@@ -1,16 +1,30 @@
 body {
   background-color: #232323;
   color: white;
+  font-family: 'Raleway', sans-serif;
+}
+
+h1 {
+  margin: 0;
+  padding: 1% 0;
+  background-color: #587cb5;
 }
 
 .heading-display {
-  color: white;
-  width: 30%;
-  margin: 0 auto;
+  text-align: center;
 }
 
 #rgb-color-display {
   text-transform: uppercase;
+  display: block;
+  font-size: 5rem;
+}
+
+#control-bar {
+  color: black;
+  background-color: white;
+  text-align: center;
+  font-weight: 700;
 }
 
 .tile-board {
@@ -22,6 +36,31 @@ body {
   width: 30%;
   margin: 1.66%;
   float: left;
-  border-radius: 5px;
+  border-radius: 30px;
   padding-bottom: 30%;
+}
+
+.animated {
+  animation-duration: .5s;
+}
+
+button {
+  padding-left: 10px;
+  padding-right: 10px;
+  color: #587cb5;
+  outline: none;
+  border: none;
+  background-color: white;
+  height: 100%;
+  transition: all 0.3s;
+}
+
+.selected {
+  background-color: #587cb5;
+  color: white;
+}
+
+button:hover {
+  background-color: #587cb5;
+  color: white;
 }

@@ -6,14 +6,24 @@ var tiles = document.querySelectorAll(".tile");
 var tileBoard = document.querySelector(".tile-board");
 var message = document.querySelector("#message");
 var h1 = document.querySelector("h1");
-var reset = document.querySelector("#reset").addEventListener("click", function(){
+var easy = document.querySelector("#easy");
+var hard = document.querySelector("#hard");
+var reset = document.querySelector("#reset")
+
+reset.addEventListener("click", function(){
   newGame();
 });
-var easy = document.querySelector("#easy").addEventListener("click", function(){
+
+easy.addEventListener("click", function(){
   numTiles = 3;
+  hard.classList.remove("selected")
+  easy.classList.add("selected")
   newGame();
 })
-var hard = document.querySelector("#hard").addEventListener("click", function(){
+
+hard.addEventListener("click", function(){
+  easy.classList.remove("selected")
+  hard.classList.add("selected")
   numTiles = 6;
   newGame();
 })
@@ -21,11 +31,13 @@ var hard = document.querySelector("#hard").addEventListener("click", function(){
 tileBoard.addEventListener("click", function(e){
   if(e.target.classList[0] === "tile"){
     if(e.target.classList[1] !== "winner"){
-      e.target.classList.add("invisible");
+      e.target.classList.add("animated");
+      e.target.classList.add("fadeOut");
       message.classList.remove("invisible");
-      message.innerText = "Try Again."
+      message.innerText = "TRY AGAIN."
     } else {
-      message.innerText = "Correct!"
+      message.innerText = "CORRECT!"
+      reset.innerText = "PLAY AGAIN?"
       endGameColorChange();
     }
   }
@@ -56,12 +68,15 @@ function generateTiles(){
   }
 }
 
-function resetGameClasses(){
+function resetGameSettings(){
   for(var i = 0; i < tiles.length; i++){
     tiles[i].classList.remove("winner");
-    tiles[i].classList.remove("invisible");
+    tiles[i].classList.remove("animated");
+    tiles[i].classList.remove("fadeOut");
   }
   message.classList.add("invisible");
+  h1.style.backgroundColor = "#587cb5";
+  reset.innerText = "NEW COLORS"
 }
 
 function selectWinningColor(){
@@ -78,7 +93,8 @@ function addClassToTiles(){
 
 function endGameColorChange(){
   for(i = 0; i < numTiles; i++){
-    tiles[i].classList.remove("invisible");
+    tiles[i].classList.remove("animated");
+    tiles[i].classList.remove("fadeOut");
     tiles[i].style.backgroundColor = allColors[winningColor];
     h1.style.backgroundColor = allColors[winningColor];
   }
@@ -86,9 +102,8 @@ function endGameColorChange(){
 
 function newGame(){
   winningColor = selectWinningColor();
-  h1.style.backgroundColor = "#232323";
   generateColorArray();
-  resetGameClasses();
+  resetGameSettings();
   generateTiles();
   addClassToTiles();
   headline.innerText = allColors[winningColor];
