@@ -1,17 +1,32 @@
 var numTiles = 6;
 var allColors = [];
-var winningColor;
-var headline = document.getElementById("winning-color");
+var winningColor = selectWinningColor();
+var headline = document.getElementById("rgb-color-display");
 var tiles = document.querySelectorAll(".tile");
 var tileBoard = document.querySelector(".tile-board");
-var reset = document.querySelector("#reset").addEventListener("click", newGame);
+var message = document.querySelector("#message");
+var h1 = document.querySelector("h1");
+var reset = document.querySelector("#reset").addEventListener("click", function(){
+  winningColor = selectWinningColor();
+  newGame();
+});
+var easy = document.querySelector("#easy").addEventListener("click", function(){
+  numTiles = 3;
+  newGame();
+})
+var hard = document.querySelector("#hard").addEventListener("click", function(){
+  numTiles = 6;
+  newGame();
+})
 
 tileBoard.addEventListener("click", function(e){
-  if(e.target.classList[1] === "loser"){
-    console.log("loser clicked")
-    e.target.classList.add("hide-tile");
+  if(e.target.classList[1] !== "winner"){
+    e.target.classList.add("invisible");
+    message.classList.add("show");
+    message.innerText = "Try Again."
   } else {
-    console.log("winner");
+    message.innerText = "Correct!"
+    endGameColorChange();
   }
 })
 
@@ -24,8 +39,13 @@ function randomColor(){
 }
 
 function generateColorArray(){
+  allColors = [];
   for(var i = 0; i < 6; i++){
-    allColors.push(randomColor());
+    if(i < numTiles){
+      allColors.push(randomColor());
+    } else {
+      allColors.push("rgb(35, 35, 35)");
+    }
   }
 }
 
@@ -42,28 +62,32 @@ function resetWinnerClass(){
 }
 
 function selectWinningColor(){
-  return Math.floor(Math.random()*(numTiles))
+  return Math.floor(Math.random()*numTiles)
 }
 
 function addClassToTiles(){
   for(var i = 0; i < tiles.length; i++){
     if(i === winningColor){
-      tiles[i].classList.add("winner");
-    } else {
-      tiles[i].classList.add("loser");
+      tiles[i].classList.add("winner")
     }
   }
 }
 
+function endGameColorChange(){
+  for(i = 0; i < numTiles; i++){
+    tiles[i].classList.remove("invisible");
+    tiles[i].style.backgroundColor = allColors[winningColor];
+    h1.style.backgroundColor = allColors[winningColor];
+  }
+}
+
 function newGame(){
-  winningColor = selectWinningColor();
-  allColors = [];
-  resetWinnerClass();
+  h1.style.backgroundColor = "#232323";
   generateColorArray();
   generateTiles();
+  resetWinnerClass();
   addClassToTiles();
   headline.innerText = allColors[winningColor];
-  // tiles[winningColor].classList.add("winner");
 }
 
 newGame();

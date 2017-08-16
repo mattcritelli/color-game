@@ -1,6 +1,4 @@
 body {
-  max-width: 600px;
-  margin: 0 auto;
   background-color: #232323;
 }
 
@@ -10,12 +8,16 @@ body {
   margin: 0 auto;
 }
 
-#winning-color {
+#rgb-color-display {
   text-transform: uppercase;
 }
 
-#message {
-  visibility: hidden;
+span {
+  color: white;
+}
+.tile-board {
+  margin: 0 auto;
+  max-width: 600px;
 }
 
 .tile {
@@ -24,19 +26,8 @@ body {
   float: left;
   border-radius: 5px;
   padding-bottom: 30%;
-  background-color: black;
 }
 
-
-.tile-board {
-  /*margin: 0 auto;*/
-  max-width: 600px;
-}
-
-.winner {
-  border: 3px solid red;
-}
-
-.hide-tile {
-  visibility: hidden;
+.show {
+  visibility: visible;
 }
