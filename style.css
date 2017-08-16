@@ -27,14 +27,6 @@ h1 {
   font-weight: 700;
 }
 
-.col-sm-1 {
-  max-width: 50px;
-}
-
-#hard {
-  margin-right: 20px;
-}
-
 .tile-board {
   margin: 0 auto;
   max-width: 600px;
