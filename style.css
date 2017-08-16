@@ -20,6 +20,10 @@ h1 {
   font-size: 5rem;
 }
 
+.col-sm-1 {
+  width: 50px;
+}
+
 #control-bar {
   color: black;
   background-color: white;
