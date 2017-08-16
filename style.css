@@ -1,16 +1,31 @@
 body {
   background-color: #232323;
   color: white;
+  font-family: 'Raleway', sans-serif;
+}
+
+h1 {
+  margin: 0;
+  padding: 1% 0;
+  background-color: #587cb5;
 }
 
 .heading-display {
-  color: white;
-  width: 30%;
-  margin: 0 auto;
+  text-align: center;
 }
 
 #rgb-color-display {
   text-transform: uppercase;
+  display: block;
+  font-size: 5rem;
+}
+
+#control-bar {
+  margin: 0 auto;
+  padding: 0 auto;
+  color: black;
+  background-color: white;
+  text-align: center;
 }
 
 .tile-board {
@@ -22,6 +37,11 @@ body {
   width: 30%;
   margin: 1.66%;
   float: left;
-  border-radius: 5px;
+  border-radius: 30px;
   padding-bottom: 30%;
+}
+
+.selected {
+  background-color: blue;
+  color: white;
 }
