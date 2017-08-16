@@ -6,33 +6,28 @@ var tiles = document.querySelectorAll(".tile");
 var tileBoard = document.querySelector(".tile-board");
 var message = document.querySelector("#message");
 var h1 = document.querySelector("h1");
-var easy = document.querySelector("#easy");
-var hard = document.querySelector("#hard");
-var reset = document.querySelector("#reset")
+var difficulty = document.getElementsByClassName("difficulty");
+var reset = document.querySelector("#reset");
+
+
+for(var i = 0; i < difficulty.length; i++){
+  difficulty[i].addEventListener("click", function(){
+    difficulty[0].classList.remove("selected");
+    difficulty[1].classList.remove("selected");
+    this.classList.add("selected");
+    this.textContent === "EASY" ? numTiles = 3 : numTiles = 6;
+    newGame();
+  })
+}
 
 reset.addEventListener("click", function(){
   newGame();
 });
 
-easy.addEventListener("click", function(){
-  numTiles = 3;
-  hard.classList.remove("selected")
-  easy.classList.add("selected")
-  newGame();
-})
-
-hard.addEventListener("click", function(){
-  easy.classList.remove("selected")
-  hard.classList.add("selected")
-  numTiles = 6;
-  newGame();
-})
-
 tileBoard.addEventListener("click", function(e){
   if(e.target.classList[0] === "tile"){
     if(e.target.classList[1] !== "winner"){
-      e.target.classList.add("animated");
-      e.target.classList.add("fadeOut");
+      e.target.classList.add("animated", "fadeOut");
       message.classList.remove("invisible");
       message.innerText = "TRY AGAIN."
     } else {
@@ -93,8 +88,7 @@ function addClassToTiles(){
 
 function endGameColorChange(){
   for(i = 0; i < numTiles; i++){
-    tiles[i].classList.remove("animated");
-    tiles[i].classList.remove("fadeOut");
+    tiles[i].classList.remove("animated", "fadeOut");
     tiles[i].style.backgroundColor = allColors[winningColor];
     h1.style.backgroundColor = allColors[winningColor];
   }
